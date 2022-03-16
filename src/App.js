@@ -6,6 +6,10 @@ import PrivateRoute from "./components/PrivateRoute";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import userReducer from "./store/userReducer";
+import Profile from "./pages/Profile";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Welcome from "./pages/Welcome";
 
 const store = createStore(userReducer);
 
@@ -14,8 +18,12 @@ function App() {
     <div className="App">
       <Provider store={store}>
         <Routes>
-          <Route path="/" element={<NotFound />} />
+          <Route path="/" element={<Welcome />} />
           <Route path="/home" element={<PrivateRoute element={<Home />} />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/:username" element={<Profile />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Provider>
     </div>
