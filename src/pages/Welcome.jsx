@@ -28,9 +28,9 @@ function Welcome() {
           <span className="slogan2">Join twitter today.</span>
         </div>
         <div>
-          <Link to={"/login"}>
+          <Link to={"/register"}>
             <button
-              className="welcome-page-btn btn-primary startBtn1"
+              className="welcome-page-btn btn-primary startBtn1 mt-4"
               id="btn1"
             >
               Sign up with your email
@@ -38,16 +38,16 @@ function Welcome() {
           </Link>
         </div>
         <div>
-          <Link to={"/register"}>
+          <Link to={"/login"}>
             <button
-              className="welcome-page-btn bg-white text-primary startBtn2"
+              className="welcome-page-btn bg-white text-primary startBtn2 mt-4"
               id="btn2"
             >
               Sign in
             </button>
           </Link>
         </div>
-        <div className="label-to-hide">
+        <div className="label-to-hide mt-auto">
           <span className="label-group">
             Made by the Group 8: Florencia Biazzi, Hernán Araújo and Luis
             Álvarez.
