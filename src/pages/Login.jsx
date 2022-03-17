@@ -1,8 +1,28 @@
-import React from "react";
+import { useState } from "react";
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Login() {
+  let navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const handleSubmit = async (event) => {
+    console.log(username, password);
+    event.preventDefault();
+    const response = await axios({
+      method: "POST",
+      url: "http://localhost:8000/api/token",
+      data: {
+        username: username,
+        password: password,
+      },
+    });
+    console.log(response);
+    setUsername("");
+    setPassword("");
+    response.status === 200 ? navigate("home") : navigate("/login");
+  };
   return (
     <div className="login-background">
       <div className="form-container">
@@ -16,7 +36,10 @@ function Login() {
             <i className="fab fa-twitter blue-bird"></i>
           </span>
           <h1 className="">Incia sesión en Twitter</h1>
-          <form className="m-auto text-start" action="/login" method="POST">
+          <form
+            className="m-auto text-start"
+            onSubmit={(event) => handleSubmit(event)}
+          >
             <label className="login-label" htmlFor="username">
               Username
             </label>
@@ -26,6 +49,8 @@ function Login() {
               id="username"
               type="text"
               placeholder="Insert your username..."
+              onChange={(event) => setUsername(event.target.value)}
+              required
             />
             <label className="login-label mt-4" htmlFor="password">
               Password
@@ -36,12 +61,15 @@ function Login() {
               name="password"
               type="password"
               placeholder="Insert your password..."
+              onChange={(event) => setPassword(event.target.value)}
+              required
             />
-            <input
+            <button
               className="btn rounded-pill w-100 btn-primary my-5"
               type="submit"
-              value="Log in"
-            />
+            >
+              Log In
+            </button>
           </form>
         </div>
       </div>
