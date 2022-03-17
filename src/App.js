@@ -5,13 +5,16 @@ import NotFound from "./pages/NotFound";
 import PrivateRoute from "./components/PrivateRoute";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import userReducer from "./store/userReducer";
+import { combineReducers } from "redux";
+import user from "./store/userReducer";
+import tweets from "./store/tweetsReducer";
 import Profile from "./pages/Profile";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Welcome from "./pages/Welcome";
 
-const store = createStore(userReducer);
+const rootReducer = combineReducers({ user, tweets });
+const store = createStore(rootReducer);
 
 function App() {
   return (

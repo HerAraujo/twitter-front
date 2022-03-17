@@ -1,14 +1,12 @@
-function userReducer(state = { user: null }, action) {
+function userReducer(state = null, action) {
   switch (action.type) {
     case "LOGIN":
       console.log(action.payload);
       return {
         ...state,
-        user: {
-          id: action.payload.user.id,
-          accessToken: action.payload.user.accessToken,
-          username: action.payload.user.username,
-        },
+        id: action.payload.user.id,
+        accessToken: action.payload.user.accessToken,
+        username: action.payload.user.username,
       };
 
     case "LOGOUT":

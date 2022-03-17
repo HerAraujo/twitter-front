@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
 function Home() {
-  const user = useSelector((store) => store.user);
-  console.log(user);
+  const store = useSelector((store) => store);
+  console.log(store.user);
+  console.log(store.tweets);
   return <div>home</div>;
 }
 
