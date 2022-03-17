@@ -23,16 +23,13 @@ function Login() {
           password: password,
         },
       });
-      console.log(response.data.user);
+
       dispatch(logIn(response.data.user));
-      console.log(response);
       setUsername("");
       setPassword("");
       if (response.status === 200) navigate("/home");
     } catch (error) {
-      console.log("hola", error);
       setcredentialsAreCorrect(false);
-      console.log(credentialsAreCorrect);
     }
   };
   return (
