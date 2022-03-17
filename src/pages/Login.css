@@ -22,3 +22,7 @@
 .login-label {
   color: #212529;
 }
+.incorrect-credentials {
+  font-size: x-small;
+  color: red;
+}

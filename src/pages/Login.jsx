@@ -2,26 +2,38 @@ import { useState } from "react";
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { logIn } from "../store/actions";
 
 function Login() {
   let navigate = useNavigate();
+  const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [credentialsAreCorrect, setcredentialsAreCorrect] = useState("true");
+
   const handleSubmit = async (event) => {
-    console.log(username, password);
-    event.preventDefault();
-    const response = await axios({
-      method: "POST",
-      url: "http://localhost:8000/api/token",
-      data: {
-        username: username,
-        password: password,
-      },
-    });
-    console.log(response);
-    setUsername("");
-    setPassword("");
-    response.status === 200 ? navigate("home") : navigate("/login");
+    try {
+      event.preventDefault();
+      const response = await axios({
+        method: "POST",
+        url: "http://localhost:8000/api/token",
+        data: {
+          username: username,
+          password: password,
+        },
+      });
+      console.log(response.data.user);
+      dispatch(logIn(response.data.user));
+      console.log(response);
+      setUsername("");
+      setPassword("");
+      if (response.status === 200) navigate("/home");
+    } catch (error) {
+      console.log("hola", error);
+      setcredentialsAreCorrect(false);
+      console.log(credentialsAreCorrect);
+    }
   };
   return (
     <div className="login-background">
@@ -64,6 +76,11 @@ function Login() {
               onChange={(event) => setPassword(event.target.value)}
               required
             />
+            {!credentialsAreCorrect && (
+              <h4 className="incorrect-credentials mt-2">
+                Usuario o contraseña incorrecta. Por favor vuleve a intentarlo.
+              </h4>
+            )}
             <button
               className="btn rounded-pill w-100 btn-primary my-5"
               type="submit"
