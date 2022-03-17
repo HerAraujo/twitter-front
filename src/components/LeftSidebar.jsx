@@ -1,8 +1,9 @@
 import UserPill from "./UserPill";
+import "./LeftSidebar.css";
 
 function LeftSidebar() {
   return (
-    <div className="sidebar d-none d-sm-flex flex-column justify-content-between align-items-start p-3 position-fixed">
+    <div className="left-sidebar d-none d-sm-flex flex-column justify-content-between align-items-start p-3 position-fixed">
       <div className="row h-100">
         <div className="col d-flex flex-column justify-content-between">
           <div>

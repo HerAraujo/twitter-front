@@ -1,0 +1,9 @@
+.left-sidebar {
+  border-right: solid;
+  border-width: thin;
+  border-color: #eff4f8;
+  padding: 0;
+}
+.l-sidebar-user {
+  margin-top: 2rem;
+}
