@@ -23,6 +23,7 @@
 }
 .user-pill-name > p {
   margin: 0;
+  font-weight: bold;
 }
 .user-pill-modal-btn {
   display: flex;
