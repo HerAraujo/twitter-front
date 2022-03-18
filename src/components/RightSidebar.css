@@ -1,27 +1,7 @@
-.right-sidebar {
-  display: flex;
-  flex-direction: column;
-  width: 400px;
-  padding: 0 2rem;
-  border-left: solid;
-  border-width: thin;
-  border-color: #eff4f8;
-}
-.r-sidebar-search-nav {
-  display: flex;
-  justify-content: center;
-  width: fit-content;
-  padding: 0.2rem 0;
-  margin: 0;
-  background-color: white;
-}
-.r-sidebar-search-nav > div {
-  width: 100%;
-}
 .r-sidebar-search-input {
   border-style: none;
   font-size: small;
-  width: 332px;
+  width: 100%;
   padding: 0.5rem;
   background-color: #eff4f8;
 }
@@ -112,11 +92,6 @@
 .r-sidebar-ul {
   list-style: none;
   text-align: left;
-}
-@media (max-width: 1000px) {
-  .right-sidebar {
-    display: none;
-  }
 }
 .r-sidebar-follow-suggestion {
   padding: 0.5rem 2rem;

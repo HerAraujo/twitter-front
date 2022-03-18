@@ -40,6 +40,7 @@ function Profile() {
     getTweets();
     getUser();
   }, []);
+
   return (
     <div>
       {user && (

@@ -5,16 +5,14 @@ function RightSidebar() {
   return (
     <div className="right-sidebar">
       <div>
-        <nav className="navbar r-sidebar-search-nav">
-          <form className="r-sidebar-search-nav">
-            <div>
-              <input
-                className="form-control r-sidebar-search-input rounded-pill"
-                type="search"
-                placeholder={`    Search Twitter`}
-                aria-label="Search"
-              />
-            </div>
+        <nav className="navbar r-sidebar-search-nav ">
+          <form className="r-sidebar-search-nav w-100">
+            <input
+              className="form-control r-sidebar-search-input rounded-pill"
+              type="search"
+              placeholder={`    Search Twitter`}
+              aria-label="Search"
+            />
           </form>
         </nav>
       </div>

@@ -22,20 +22,20 @@ function UserPill() {
   return (
     <div>
       {userInfo && (
-        <div className="user-pill-wrapper">
+        <div
+          className="user-pill-wrapper d-flex justify-content-center"
+          onClick={() => setShowModal((prev) => !prev)}
+        >
           <div className="user-pill-info">
             <div className="user-pill-photo">
               <img src={userInfo.profileImage} alt={userInfo.username} />
             </div>
-            <div className="user-pill-name">
+            <div className="user-pill-name d-none d-xl-inline-block">
               <p>{userInfo.firstname}</p>
               <span>{`@${user.username}`}</span>
             </div>
           </div>
-          <div
-            className="user-pill-modal-btn"
-            onClick={() => setShowModal((prev) => !prev)}
-          >
+          <div className="user-pill-modal-btn d-none d-xl-inline-block">
             <svg viewBox="0 0 24 24" className="user-pill-modal-dots-items">
               <g>
                 <circle cx="5" cy="12" r="2"></circle>

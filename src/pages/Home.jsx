@@ -29,15 +29,17 @@ function Home() {
   console.log(store.user);
   console.log(store.tweets);
   return (
-    <div className="home-wrapper">
-      <div className="home-left-sidebar">
-        <LeftSidebar />
-      </div>
-      <div className="home-center">
-        <Tweets tweets={tweets} />
-      </div>
-      <div className="home-rigth-sidebar">
-        <RightSidebar />
+    <div className="container">
+      <div className="row">
+        <div className="col-3  d-flex flex-column  align-items-end">
+          <LeftSidebar />
+        </div>
+        <div className="col-12 col-sm-9 col-lg-6">
+          <Tweets tweets={tweets} />
+        </div>
+        <div className="col-lg-3 d-none d-lg-inline-block right-sidebar">
+          <RightSidebar />
+        </div>
       </div>
     </div>
   );

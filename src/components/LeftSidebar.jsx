@@ -22,9 +22,8 @@ function LeftSidebar() {
               <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start">
                 <a className="text-decoration-none" href="/home">
                   <i className="navbar-icon fas fa-home"></i>
-                  <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal">
-                    {" "}
-                    Home{" "}
+                  <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
+                    Home
                   </span>
                 </a>
               </h3>
@@ -38,9 +37,8 @@ function LeftSidebar() {
                   href=""
                 >
                   <i className="navbar-icon fas fa-hashtag"></i>
-                  <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal">
-                    {" "}
-                    Explore{" "}
+                  <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
+                    Explore
                   </span>
                 </a>
               </h3>
@@ -54,9 +52,8 @@ function LeftSidebar() {
                   href=""
                 >
                   <i className="navbar-icon fas fa-bell"></i>
-                  <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal">
-                    {" "}
-                    Notifications{" "}
+                  <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
+                    Notifications
                   </span>
                 </a>
               </h3>
@@ -70,8 +67,7 @@ function LeftSidebar() {
                   href=""
                 >
                   <i className="navbar-icon fas fa-inbox"></i>
-                  <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal">
-                    {" "}
+                  <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
                     Messages
                   </span>
                 </a>
@@ -86,9 +82,8 @@ function LeftSidebar() {
                   href=""
                 >
                   <i className="navbar-icon fas fa-bookmark"></i>
-                  <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal">
-                    {" "}
-                    Bookmarks{" "}
+                  <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
+                    Bookmarks
                   </span>
                 </a>
               </h3>
@@ -102,25 +97,22 @@ function LeftSidebar() {
                   href=""
                 >
                   <i className="navbar-icon fas fa-list-alt"></i>
-                  <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal">
-                    {" "}
-                    Lists{" "}
+                  <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
+                    Lists
                   </span>
                 </a>
               </h3>
 
               <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start align-items-center">
                 <i className="navbar-icon fas fa-user"></i>
-                <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal">
-                  {" "}
-                  Profile{" "}
+                <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
+                  Profile
                 </span>
               </h3>
             </div>
           </div>
           <div className="d-flex flex-column justify-content-end">
             <div className="btn-group dropup px-2">
-              image
               <ul className="dropdown-menu border-0 shadow">
                 <li className="text-center">
                   <a className="text-decoration-none" href="/logout">
@@ -133,7 +125,7 @@ function LeftSidebar() {
               Tweet
             </button>
           </div>
-          <div className="l-sidebar-user">
+          <div>
             <UserPill />
           </div>
         </div>
