@@ -190,8 +190,8 @@ function RightSidebar() {
         </div>
         <div className="r-sidebar-trends-show">Show more</div>
       </div>
-      <div className="r-sidebar-follow">
-        <span className="r-sidebar-follow-label">Who to follow</span>
+      <div className="r-sidebar-follow mt-4">
+        <span className="r-sidebar-follow-label ">Who to follow</span>
         <div className="r-sidebar-follow-suggestion">
           <SuggestFollow />
         </div>

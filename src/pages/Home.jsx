@@ -13,7 +13,7 @@ function Home() {
   const store = useSelector((store) => store);
   const updatedTweets = useSelector((store) => store.tweets);
   const dispatch = useDispatch();
-  console.log("token", store);
+
   useEffect(() => {
     const getTweets = async () => {
       try {

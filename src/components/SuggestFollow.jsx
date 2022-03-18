@@ -17,7 +17,7 @@ function SuggestFollow() {
     <div className="sg-follow-wrapper">
       {usersToSuggest.map((user) => {
         return (
-          <div key={user._id} className="sg-follow-content">
+          <div key={user._id} className="sg-follow-content d-flex flex-column ">
             <div className="sg-follow-info">
               <img src={user.profileImage} alt={user.username} />
               <div className="sg-follow-name">
@@ -26,7 +26,7 @@ function SuggestFollow() {
               </div>
             </div>
             <div className="sg-follow-btn-container">
-              <button className="sg-follow-btn">Follow</button>
+              <button className="sg-follow-btn my-2">Follow</button>
             </div>
           </div>
         );
