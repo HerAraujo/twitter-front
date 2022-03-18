@@ -89,7 +89,7 @@ function LeftSidebar() {
               </h3>
 
               <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start align-items-center">
-                <Link to={`/${user.username}`}>
+                <Link to={`/${user?.username}`}>
                   <i className="navbar-icon fas fa-user"></i>
                   <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
                     Profile

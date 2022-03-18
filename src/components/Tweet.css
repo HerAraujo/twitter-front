@@ -96,3 +96,6 @@ input {
 .profile-btn:hover {
   background-color: lightgray;
 }
+.red-heart {
+  color: red;
+}

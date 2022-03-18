@@ -26,7 +26,7 @@ function Profile() {
         });
         setUser(response.data);
       } catch (error) {
-        console.log("error", error);
+        console.log(error);
         <NotFound />;
       }
     };
@@ -49,7 +49,7 @@ function Profile() {
   useEffect(() => dispatch(updateTweets(tweets)), [tweets]);
 
   const handleFollow = () => {
-    if (user.followers.includes(loggedUser.id)) {
+    if (user.followers.includes(loggedUser?.id)) {
       setFollow("Follow");
     } else {
       setFollow("Unfollow");
@@ -77,7 +77,7 @@ function Profile() {
                       src={user.profileImage}
                       alt="profile photo"
                     />
-                    {loggedUser.username === params.username ? (
+                    {loggedUser?.username === params.username ? (
                       <button className="btn btn-dark rounded-pill mt-2">
                         Edit profile
                       </button>
@@ -86,7 +86,7 @@ function Profile() {
                         type="submit"
                         className="btn btn-dark rounded-pill mt-2"
                       >
-                        {user.followers.includes(loggedUser.id)
+                        {user.followers.includes(loggedUser?.id)
                           ? "Unfollow"
                           : "Follow"}
                       </button>

@@ -16,4 +16,17 @@ function storeTweet(tweet) {
     payload: { tweet },
   };
 }
-export { logIn, updateTweets, storeTweet };
+function like(tweet, user) {
+  return {
+    type: "LIKE",
+    payload: { tweet, user },
+  };
+}
+function unlike(tweet, user) {
+  return {
+    type: "UNLIKE",
+    payload: { tweet, user },
+  };
+}
+
+export { logIn, updateTweets, storeTweet, like, unlike };

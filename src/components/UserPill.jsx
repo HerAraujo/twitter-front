@@ -12,7 +12,7 @@ function UserPill() {
   useEffect(() => {
     const getUser = async () => {
       const { data } = await axios.get(
-        `http://localhost:8000/api/users/${user.username}`
+        `http://localhost:8000/api/users/${user?.username}`
       );
       setUserInfo(data);
     };

@@ -23,9 +23,8 @@ function Home() {
           headers: { Authorization: `Bearer ${store.user.accessToken}` },
         });
         setTweets(response.data.tweets);
-        console.log(response.data.tweets);
       } catch (error) {
-        console.log("hola", error);
+        console.log(error);
       }
     };
     getTweets();

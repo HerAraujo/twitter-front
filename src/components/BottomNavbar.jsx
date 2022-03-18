@@ -13,7 +13,7 @@ function BottomNavbar() {
   useEffect(() => {
     const getUser = async () => {
       const { data } = await axios.get(
-        `http://localhost:8000/api/users/${user.username}`
+        `http://localhost:8000/api/users/${user?.username}`
       );
       setUserInfo(data);
     };
@@ -25,7 +25,7 @@ function BottomNavbar() {
       <Link to={"/home"}>
         <i className="navbar-icon fas fa-home fa-xl"></i>
       </Link>
-      <Link to={`/${user.username}`}>
+      <Link to={`/${user?.username}`}>
         <i className="navbar-icon fas fa-user fa-xl"></i>
       </Link>
 

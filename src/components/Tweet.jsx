@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import Like from "./Like";
 import "./Tweet.css";
 
 function Tweet({ tweet }) {
@@ -30,8 +31,8 @@ function Tweet({ tweet }) {
             </a>
           </div>
           <div>
-            {tweet.author.username === user.username && (
-              <form action={`/delete/${tweet.id}`} method="DELETE">
+            {tweet.author.username === user?.username && (
+              <form action={`/api/delete/${tweet.id}`} method="DELETE">
                 <button
                   className="btn btn-outline-muted text-muted"
                   type="submit"
@@ -60,17 +61,7 @@ function Tweet({ tweet }) {
           >
             <i className="fa-solid fa-retweet"></i>
           </span>
-          <form method="POST" action={`/like/${tweet.id}`}>
-            <button
-              className="btn-transparent d-flex flex-row justify-content-between align-items-center"
-              type="submit"
-            >
-              <span className="d-flex align-items-center justify-content-center icons like">
-                <i className="fa-regular fa-heart"></i>
-              </span>
-              <span className="fs-8 icons-number">{tweet.likes.length}</span>
-            </button>
-          </form>
+          <Like tweet={tweet} user={user} />
           <span
             data-bs-toggle="tooltip"
             data-bs-placement="top"
