@@ -14,12 +14,10 @@ function UserPill() {
       const { data } = await axios.get(
         `http://localhost:8000/api/users/${user.username}`
       );
-      console.log("data", data);
       setUserInfo(data);
     };
     getUser();
   }, []);
-  console.log("userinfo", userInfo);
 
   return (
     <div>

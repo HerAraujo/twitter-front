@@ -9,7 +9,6 @@ function SuggestFollow() {
     const { data } = await axios.get("http://localhost:8000/api/users");
     setUsers(data.sort());
   };
-  console.log(users);
   const usersToSuggest = users.slice(0, 3);
   useEffect(() => {
     getUsers();
