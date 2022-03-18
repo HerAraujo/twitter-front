@@ -1,8 +1,14 @@
 import "./LogoutModal.css";
-
+import { useDispatch } from "react-redux";
+import store from "../store/store";
 function LogoutModal() {
+  const dispatch = useDispatch();
   const handlerClick = () => {
-    window.alert("log out");
+    const action = {
+      type: "LOGOUT",
+    };
+    dispatch(action);
+    console.log("dispatch", action);
   };
   return (
     <div className="logout-modal shadow">

@@ -1,7 +1,7 @@
 .logout-modal {
   position: absolute;
-  left: 100px;
-  top: 500px;
+  left: 15%;
+  top: 60%;
   width: 30vw;
   height: 20vh;
   overflow: auto;
