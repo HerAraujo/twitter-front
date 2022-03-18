@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { storeTweet } from "../store/actions";
 import "./CreateTweet.css";
 
-function CreateTweet() {
+function CreateTweet({ handleClose }) {
   const user = useSelector((store) => store.user);
 
   const [loggedUser, setLoggedUser] = useState("");
@@ -42,6 +42,7 @@ function CreateTweet() {
 
       setContent("");
       dispatch(storeTweet(response.data.newTweet));
+      handleClose();
     } catch (error) {
       console.log(error);
     }

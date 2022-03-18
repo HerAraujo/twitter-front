@@ -2,8 +2,14 @@ import UserPill from "./UserPill";
 import "./LeftSidebar.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Modal, Button } from "react-bootstrap";
+import { useState } from "react";
+import CreateTweet from "./CreateTweet";
 
 function LeftSidebar() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const user = useSelector((store) => store.user);
   return (
     <div className="left-sidebar d-none d-sm-flex flex-column justify-content-between align-items-start p-3 position-fixed">
@@ -93,10 +99,23 @@ function LeftSidebar() {
             </div>
           </div>
           <div className="d-flex flex-column justify-content-end">
-            <button className="btn btn-primary rounded-pill" id="new-tweet">
+            <button
+              className="btn btn-primary rounded-pill"
+              id="new-tweet"
+              onClick={handleShow}
+            >
               Tweet
             </button>
           </div>
+          <Modal show={show} onHide={handleClose}>
+            <div className="d-flex justify-content-end m-2">
+              <i
+                className="fa-solid fa-xmark cursor-pointer"
+                onClick={handleClose}
+              ></i>
+            </div>
+            <CreateTweet handleClose={handleClose} />
+          </Modal>
           <div>
             <UserPill />
           </div>
