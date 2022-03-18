@@ -1,0 +1,9 @@
+.create-tweet-user-photo {
+  width: 60px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  max-width: 100%;
+}
+.create-tweet-tweet-card {
+  border: 1px rgba(165, 164, 164, 0.178) solid;
+}

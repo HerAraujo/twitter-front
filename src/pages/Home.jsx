@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./Home.css";
 import RightSidebar from "../components/RightSidebar";
 import LeftSidebar from "../components/LeftSidebar";
 import axios from "axios";
 import Tweets from "../components/Tweets";
+import CreateTweet from "../components/CreateTweet";
+import { updateTweets } from "../store/actions";
 
 function Home() {
   const [tweets, setTweets] = useState([]);
   const store = useSelector((store) => store);
+  const updatedTweets = useSelector((store) => store.tweets);
+  const dispatch = useDispatch();
   console.log("token", store);
   useEffect(() => {
     const getTweets = async () => {
@@ -25,9 +29,8 @@ function Home() {
     };
     getTweets();
   }, []);
+  useEffect(() => dispatch(updateTweets(tweets)), [tweets]);
 
-  console.log(store.user);
-  console.log(store.tweets);
   return (
     <div className="container">
       <div className="row">
@@ -35,7 +38,8 @@ function Home() {
           <LeftSidebar />
         </div>
         <div className="col-12 col-sm-9 col-lg-6">
-          <Tweets tweets={tweets} />
+          <CreateTweet />
+          <Tweets tweets={updatedTweets} />
         </div>
         <div className="col-lg-3 d-none d-lg-inline-block right-sidebar">
           <RightSidebar />

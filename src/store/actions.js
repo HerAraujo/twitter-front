@@ -10,4 +10,10 @@ function updateTweets(tweets) {
     payload: { tweets },
   };
 }
-export { logIn, updateTweets };
+function storeTweet(tweet) {
+  return {
+    type: "STORE_TWEET",
+    payload: { tweet },
+  };
+}
+export { logIn, updateTweets, storeTweet };
