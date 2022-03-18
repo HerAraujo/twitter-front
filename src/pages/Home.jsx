@@ -7,6 +7,7 @@ import axios from "axios";
 import Tweets from "../components/Tweets";
 import CreateTweet from "../components/CreateTweet";
 import { updateTweets } from "../store/actions";
+import BottomNavbar from "../components/BottomNavbar";
 
 function Home() {
   const [tweets, setTweets] = useState([]);
@@ -45,6 +46,7 @@ function Home() {
           <RightSidebar />
         </div>
       </div>
+      <BottomNavbar />
     </div>
   );
 }

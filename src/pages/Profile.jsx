@@ -7,6 +7,7 @@ import RightSidebar from "../components/RightSidebar";
 import Tweets from "../components/Tweets";
 import NotFound from "./NotFound";
 import { updateTweets } from "../store/actions";
+import BottomNavbar from "../components/BottomNavbar";
 
 function Profile() {
   const [tweets, setTweets] = useState([]);
@@ -158,6 +159,7 @@ function Profile() {
               <RightSidebar />
             </div>
           </div>
+          <BottomNavbar />
         </div>
       )}
     </div>
