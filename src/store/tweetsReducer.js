@@ -1,7 +1,7 @@
 function tweetsReducer(state = [], action) {
   switch (action.type) {
-    case "":
-      return state;
+    case "UPDATE_TWEETS":
+      return action.payload.tweets;
 
     default:
       return state;

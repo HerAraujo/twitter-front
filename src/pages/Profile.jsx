@@ -1,17 +1,20 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import LeftSidebar from "../components/LeftSidebar";
 import RightSidebar from "../components/RightSidebar";
 import Tweets from "../components/Tweets";
 import NotFound from "./NotFound";
+import { updateTweets } from "../store/actions";
 
 function Profile() {
   const [tweets, setTweets] = useState([]);
   const [user, setUser] = useState(null);
-  const [follow, setFollow] = useState("");
+  const [follow, setFollow] = useState("follow");
   const loggedUser = useSelector((store) => store.user);
+  const updatedTweets = useSelector((store) => store.tweets);
+  const dispatch = useDispatch();
   let params = useParams();
 
   useEffect(() => {
@@ -22,7 +25,7 @@ function Profile() {
         });
         setUser(response.data);
       } catch (error) {
-        console.log(error);
+        console.log("error", error);
         <NotFound />;
       }
     };
@@ -37,9 +40,21 @@ function Profile() {
         console.log(error);
       }
     };
+
     getTweets();
     getUser();
   }, []);
+
+  useEffect(() => dispatch(updateTweets(tweets)), [tweets]);
+
+  const handleFollow = () => {
+    if (user.followers.includes(loggedUser.id)) {
+      setFollow("Follow");
+    } else {
+      setFollow("Unfollow");
+    }
+    return follow;
+  };
 
   return (
     <div>
@@ -51,70 +66,66 @@ function Profile() {
             </div>
 
             <div className="col-12 col-sm-9 col-lg-6">
-              <div class="row tweet-card d-flex">
-                <div class="profile-image-background"></div>
+              <div className="row tweet-card d-flex">
+                <div className="profile-image-background"></div>
 
-                <div class="d-flex flex-column">
-                  <div class="d-flex justify-content-between align-items-start">
+                <div className="d-flex flex-column">
+                  <div className="d-flex justify-content-between align-items-start">
                     <img
-                      class="col-3 user-profile-photo"
+                      className="col-3 user-profile-photo"
                       src={user.profileImage}
                       alt="profile photo"
                     />
-
-                    <a href="#"></a>
-
-                    <button
-                      type="submit"
-                      class="btn btn-dark rounded-pill mt-2"
-                    >
-                      Unfollow
-                    </button>
-
-                    <button
-                      type="submit"
-                      class="btn btn-dark rounded-pill mt-2"
-                    >
-                      Follow
-                    </button>
-
-                    <a href="#">
-                      <button class="btn btn-dark rounded-pill mt-2">
+                    {loggedUser.username === params.username ? (
+                      <button className="btn btn-dark rounded-pill mt-2">
                         Edit profile
                       </button>
-                    </a>
+                    ) : (
+                      <button
+                        type="submit"
+                        className="btn btn-dark rounded-pill mt-2"
+                      >
+                        {user.followers.includes(loggedUser.id)
+                          ? "Unfollow"
+                          : "Follow"}
+                      </button>
+                    )}
                   </div>
                   <div id="profile-data">
-                    <h2 class="d-block fs-4 me-2 text-dark fw-bold words-distance">
+                    <h2 className="text-start d-block fs-4 me-2 text-dark fw-bold words-distance">
                       {user.firstname} {user.lastname}
                     </h2>
-                    <h3 class="d-block text-muted fs-6 words-distance">
+                    <h3 className="text-start d-block text-muted fs-6 words-distance">
                       @{user.username}
                     </h3>
-                    <p class="mt-4 words-distance">
+                    <p className="text-start mt-4 words-distance">
                       Frase que elige el usuario
                     </p>
-                    <p class="text-muted">
-                      <i class="fa-solid fa-calendar-days text-muted words-distance"></i>{" "}
+                    <p className="text-muted text-start">
+                      <i className="fa-solid fa-calendar-days text-muted words-distance"></i>{" "}
                       Joined February 2022
                     </p>
-                    <div class="d-sm-flex words-distance">
-                      <p class="me-3">
-                        <span class="fw-bold">{user.following.length}</span>
-                        <span class="text-muted">Following</span>
+                    <div className="d-sm-flex words-distance">
+                      <p className="me-3">
+                        <span className="fw-bold me-1">
+                          {user.following.length}
+                        </span>
+                        <span className="text-muted">Following</span>
                       </p>
                       <p>
-                        <span class="fw-bold">{user.followers.length}</span>
-                        <span class="text-muted">Followers</span>
+                        <span className="fw-bold me-1">
+                          {user.followers.length}
+                        </span>
+                        <span className="text-muted">Followers</span>
                       </p>
                     </div>
                   </div>
-                  <div class="row">
-                    <a class="col-3 text-center profile-btn btn btn-outline">
+                  <div className="row">
+                    <a className="col-3 text-center profile-btn btn btn-outline">
                       Tweets
                     </a>
                     <a
-                      class="col-4 text-center profile-btn btn btn-outline"
+                      className="col-4 text-center profile-btn btn btn-outline"
                       data-bs-toggle="tooltip"
                       data-bs-placement="top"
                       title="Lo sentimos, esta funcionalidad escapa del alcance de nuestro proyecto"
@@ -122,7 +133,7 @@ function Profile() {
                       Tweets & replies
                     </a>
                     <a
-                      class="col-2 text-center profile-btn btn btn-outline"
+                      className="col-2 text-center profile-btn btn btn-outline"
                       data-bs-toggle="tooltip"
                       data-bs-placement="top"
                       title="Lo sentimos, esta funcionalidad escapa del alcance de nuestro proyecto"
@@ -130,7 +141,7 @@ function Profile() {
                       Media
                     </a>
                     <a
-                      class="col-3 text-center btn btn-outline profile-btn"
+                      className="col-3 text-center btn btn-outline profile-btn"
                       data-bs-toggle="tooltip"
                       data-bs-placement="top"
                       title="Lo sentimos, esta funcionalidad escapa del alcance de nuestro proyecto"
@@ -140,7 +151,7 @@ function Profile() {
                   </div>
                 </div>
               </div>
-              <Tweets tweets={tweets} />
+              <Tweets tweets={updatedTweets} />
             </div>
 
             <div className="col-lg-3 d-none d-lg-inline-block right-sidebar">

@@ -4,4 +4,10 @@ function logIn(user) {
     payload: { user },
   };
 }
-export { logIn };
+function updateTweets(tweets) {
+  return {
+    type: "UPDATE_TWEETS",
+    payload: { tweets },
+  };
+}
+export { logIn, updateTweets };
