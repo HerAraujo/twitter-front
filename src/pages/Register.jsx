@@ -16,7 +16,6 @@ function Register() {
 
   const handleSubmit = async (event) => {
     try {
-      console.log(username, email, firstname, lastname, password);
       event.preventDefault();
       const response = await axios({
         method: "POST",
@@ -30,7 +29,6 @@ function Register() {
         },
       });
 
-      console.log("response", response.data);
       setEmail("");
       setLastname("");
       setFirstname("");

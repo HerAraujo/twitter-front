@@ -1,7 +1,6 @@
 function userReducer(state = null, action) {
   switch (action.type) {
     case "LOGIN":
-      console.log(action.payload);
       return {
         ...state,
         id: action.payload.user.id,

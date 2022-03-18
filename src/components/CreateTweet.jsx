@@ -7,9 +7,7 @@ import "./CreateTweet.css";
 
 function CreateTweet() {
   const user = useSelector((store) => store.user);
-  const store = useSelector((store) => store);
-  console.log("store.user", user.accessToken);
-  console.log("storeeeee", store);
+
   const [loggedUser, setLoggedUser] = useState("");
   const [content, setContent] = useState("");
 
@@ -41,7 +39,7 @@ function CreateTweet() {
           content: content,
         },
       });
-      console.log("nuevo tweet", response);
+
       setContent("");
       dispatch(storeTweet(response.data.newTweet));
     } catch (error) {
@@ -49,7 +47,6 @@ function CreateTweet() {
     }
   };
 
-  console.log("user", user);
   return (
     <div className="row create-tweet-tweet-card d-flex p-4">
       <h1 className="fs-5 text-start mb-4">Home</h1>

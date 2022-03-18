@@ -8,7 +8,6 @@ function LogoutModal() {
       type: "LOGOUT",
     };
     dispatch(action);
-    console.log("dispatch", action);
   };
   return (
     <div className="logout-modal shadow">
