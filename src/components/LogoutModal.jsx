@@ -1,12 +1,15 @@
 import "./LogoutModal.css";
 import { useDispatch } from "react-redux";
-import store from "../store/store";
+import { useNavigate } from "react-router-dom";
+
 function LogoutModal() {
+  let navigate = useNavigate();
   const dispatch = useDispatch();
   const handlerClick = () => {
     const action = {
       type: "LOGOUT",
     };
+    navigate("/");
     dispatch(action);
   };
   return (

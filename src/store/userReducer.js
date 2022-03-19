@@ -9,7 +9,7 @@ function userReducer(state = null, action) {
       };
 
     case "LOGOUT":
-      return { ...state, user: null };
+      return null;
 
     default:
       return state;
