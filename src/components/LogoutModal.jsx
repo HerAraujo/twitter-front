@@ -2,7 +2,7 @@ import "./LogoutModal.css";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-function LogoutModal() {
+function LogoutModal({ userInfo }) {
   let navigate = useNavigate();
   const dispatch = useDispatch();
   const handlerClick = () => {
@@ -13,16 +13,25 @@ function LogoutModal() {
     dispatch(action);
   };
   return (
-    <div className="logout-modal shadow">
+    <div className="logout-modal">
       <div className="logout-modal-content">
-        <button
-          className="btn btn-primary"
+        <div className="logout-modal-user-info">
+          <div className="logout-modal-user-photo">
+            <img src={userInfo.profileImage} alt={userInfo.username} />
+          </div>
+          <div className="logout-modal-user-name d-none d-xl-inline-block">
+            <p>{userInfo.firstname}</p>
+            <span>{`@${userInfo.username}`}</span>
+          </div>
+        </div>
+        <span
+          className="logout-modal-logoutbtn"
           onClick={() => {
             handlerClick();
           }}
         >
-          Log out
-        </button>
+          {`Log out @${userInfo.username}`}
+        </span>
       </div>
     </div>
   );

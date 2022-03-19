@@ -22,10 +22,7 @@ function UserPill() {
   return (
     <div>
       {userInfo && (
-        <div
-          className="user-pill-wrapper d-flex justify-content-center"
-          onClick={() => setShowModal((prev) => !prev)}
-        >
+        <div className="user-pill-wrapper d-flex justify-content-center">
           <div className="user-pill-info">
             <div className="user-pill-photo">
               <img src={userInfo.profileImage} alt={userInfo.username} />
@@ -35,7 +32,10 @@ function UserPill() {
               <span>{`@${user.username}`}</span>
             </div>
           </div>
-          <div className="user-pill-modal-btn d-none d-xl-inline-block">
+          <div
+            className="user-pill-modal-btn d-none d-xl-inline-block"
+            onClick={() => setShowModal((prev) => !prev)}
+          >
             <svg viewBox="0 0 24 24" className="user-pill-modal-dots-items">
               <g>
                 <circle cx="5" cy="12" r="2"></circle>
@@ -43,8 +43,8 @@ function UserPill() {
                 <circle cx="19" cy="12" r="2"></circle>
               </g>
             </svg>
-            {showModal && <LogoutModal />}
           </div>
+          {showModal && <LogoutModal userInfo={userInfo} />}
         </div>
       )}
     </div>

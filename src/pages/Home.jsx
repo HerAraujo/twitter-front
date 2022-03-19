@@ -34,10 +34,10 @@ function Home() {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-3  d-flex flex-column  align-items-end">
+        <div className="col-3  d-flex flex-column  align-items-end mh-100">
           <LeftSidebar />
         </div>
-        <div className="col-12 col-sm-9 col-lg-6">
+        <div className="col-12 col-sm-9 col-lg-6 home-border">
           <CreateTweet />
           <Tweets tweets={updatedTweets} />
         </div>

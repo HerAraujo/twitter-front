@@ -1,4 +1,5 @@
 .user-pill-wrapper {
+  position: relative;
   margin-top: 1rem;
   display: flex;
   flex-direction: row;

@@ -1,5 +1,4 @@
 import UserPill from "./UserPill";
-import "./LeftSidebar.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Modal, Button } from "react-bootstrap";
@@ -12,7 +11,7 @@ function LeftSidebar() {
   const handleShow = () => setShow(true);
   const user = useSelector((store) => store.user);
   return (
-    <div className="left-sidebar d-none d-sm-flex flex-column justify-content-between align-items-start p-3 position-fixed">
+    <div className="left-sidebar d-none d-sm-flex flex-column justify-content-between align-items-start p-3 position-fixed h-100">
       <div className="row h-100">
         <div className="col d-flex flex-column justify-content-between">
           <div>
@@ -97,16 +96,17 @@ function LeftSidebar() {
                 </Link>
               </h3>
             </div>
+            <div className="d-flex flex-column justify-content-end">
+              <button
+                className="btn btn-primary rounded-pill"
+                id="new-tweet"
+                onClick={handleShow}
+              >
+                Tweet
+              </button>
+            </div>
           </div>
-          <div className="d-flex flex-column justify-content-end">
-            <button
-              className="btn btn-primary rounded-pill"
-              id="new-tweet"
-              onClick={handleShow}
-            >
-              Tweet
-            </button>
-          </div>
+
           <Modal show={show} onHide={handleClose}>
             <div className="d-flex justify-content-end m-2">
               <i
@@ -116,7 +116,7 @@ function LeftSidebar() {
             </div>
             <CreateTweet handleClose={handleClose} />
           </Modal>
-          <div>
+          <div className="align-self-end position-relative">
             <UserPill />
           </div>
         </div>
