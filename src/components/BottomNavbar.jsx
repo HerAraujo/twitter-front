@@ -3,9 +3,15 @@ import LogoutModal from "./LogoutModal";
 import "./BottomNavbar.css";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import CreateTweet from "./CreateTweet";
 
 function BottomNavbar() {
+  const [show, setShow] = useState(false); // show for create tweet modal
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const user = useSelector((state) => state.user);
   const [userInfo, setUserInfo] = useState("");
   const [showModal, setShowModal] = useState(false);
@@ -35,8 +41,19 @@ function BottomNavbar() {
         alt={userInfo.username}
         onClick={() => setShowModal((prev) => !prev)}
       />
-      <button className="btn rounded-pill btn-primary">New Tweet</button>
+      <button className="btn rounded-pill btn-primary" onClick={handleShow}>
+        New Tweet
+      </button>
       {showModal && <LogoutModal />}
+      <Modal show={show} onHide={handleClose}>
+        <div className="d-flex justify-content-end m-2">
+          <i
+            className="fa-solid fa-xmark cursor-pointer"
+            onClick={handleClose}
+          ></i>
+        </div>
+        <CreateTweet handleClose={handleClose} />
+      </Modal>
     </div>
   );
 }
