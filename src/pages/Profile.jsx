@@ -59,7 +59,7 @@ function Profile() {
 
     getTweets();
     getUser();
-  }, []);
+  }, [params.username]);
   useEffect(() => dispatch(updateTweets(tweets)), [tweets]);
   return (
     <div>
@@ -138,30 +138,35 @@ function Profile() {
                     <button className="col-3 text-center profile-btn btn btn-outline">
                       Tweets
                     </button>
-                    <button
-                      className="col-4 text-center profile-btn btn btn-outline"
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="top"
-                      title="Lo sentimos, esta funcionalidad escapa del alcance de nuestro proyecto"
+                    <OverlayTrigger
+                      placement="bottom"
+                      delay={{ show: 250, hide: 400 }}
+                      overlay={renderTooltip}
                     >
-                      Tweets & replies
-                    </button>
-                    <button
-                      className="col-2 text-center profile-btn btn btn-outline"
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="top"
-                      title="Lo sentimos, esta funcionalidad escapa del alcance de nuestro proyecto"
+                      <a className="col-4 text-center profile-btn btn btn-outline">
+                        Tweets & replies
+                      </a>
+                    </OverlayTrigger>
+
+                    <OverlayTrigger
+                      placement="bottom"
+                      delay={{ show: 250, hide: 400 }}
+                      overlay={renderTooltip}
                     >
-                      Media
-                    </button>
-                    <button
-                      className="col-3 text-center btn btn-outline profile-btn"
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="top"
-                      title="Lo sentimos, esta funcionalidad escapa del alcance de nuestro proyecto"
+                      <a className="col-2 text-center profile-btn btn btn-outline">
+                        Media
+                      </a>
+                    </OverlayTrigger>
+
+                    <OverlayTrigger
+                      placement="bottom"
+                      delay={{ show: 250, hide: 400 }}
+                      overlay={renderTooltip}
                     >
-                      <div>Likes</div>
-                    </button>
+                      <a className="col-3 text-center btn btn-outline profile-btn">
+                        <div>Likes</div>
+                      </a>
+                    </OverlayTrigger>
                   </div>
                 </div>
               </div>

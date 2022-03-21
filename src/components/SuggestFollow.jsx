@@ -1,19 +1,27 @@
 import { useState, useEffect } from "react";
 import "./SuggestFollow.css";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 const axios = require("axios");
 
 function SuggestFollow() {
+  const [myFolloweds, setMyFolloweds] = useState([]);
+  const loggedUser = useSelector((store) => store.user);
   const [users, setUsers] = useState([]);
 
   const getUsers = async () => {
     try {
       const { data } = await axios.get(`${process.env.REACT_APP_URL}api/users`);
-      setUsers(data.sort());
+      setUsers(data);
     } catch (error) {
       return alert("Sorry something went wrong, please try again later");
     }
   };
-  const usersToSuggest = users.slice(0, 3);
+  const usersToSuggest = users
+    .filter((d) => {
+      return d._id !== loggedUser.id;
+    })
+    .slice(0, 3);
   useEffect(() => {
     getUsers();
   }, []);
@@ -22,16 +30,18 @@ function SuggestFollow() {
       {usersToSuggest.map((user) => {
         return (
           <div key={user._id} className="sg-follow-content d-flex flex-column ">
-            <div className="sg-follow-info">
-              <img src={user.profileImage} alt={user.username} />
-              <div className="sg-follow-name">
-                <p>{user.firstname}</p>
-                <span>{`@${user.username}`}</span>
+            <Link to={`/${user.username}`}>
+              <div className="sg-follow-info">
+                <img src={user.profileImage} alt={user.username} />
+                <div className="sg-follow-name">
+                  <p>{user.firstname}</p>
+                  <span>{`@${user.username}`}</span>
+                </div>
               </div>
-            </div>
-            <div className="sg-follow-btn-container">
-              <button className="sg-follow-btn my-2">Follow</button>
-            </div>
+              <div className="sg-follow-btn-container">
+                <button className="sg-follow-btn my-2">Follow</button>
+              </div>
+            </Link>
           </div>
         );
       })}

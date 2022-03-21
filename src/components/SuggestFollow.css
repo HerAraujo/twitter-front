@@ -10,6 +10,9 @@
   flex-direction: row;
   justify-content: space-between;
 }
+.sg-follow-content > * {
+  color: black;
+}
 .sg-follow-info {
   display: flex;
   flex-direction: row;
