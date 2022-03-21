@@ -2,8 +2,10 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import NotFound from "../pages/NotFound";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 function Follow() {
+  const [text, setText] = useState("Follow");
   const store = useSelector((store) => store);
   const params = useParams();
 
@@ -13,11 +15,12 @@ function Follow() {
         url: `${process.env.REACT_APP_URL}api/users/${params.username}`,
       });
 
-      const makeFollow = await axios({
+      await axios({
         method: "POST",
         url: `${process.env.REACT_APP_URL}api/users/follow/${response.data._id}`,
         headers: { Authorization: `Bearer ${store.user.accessToken}` },
       });
+      setText("Done");
     } catch (error) {
       return alert("Sorry something went wrong, please try again later");
     }
@@ -26,11 +29,13 @@ function Follow() {
   return (
     <div>
       <span
+        className="btn btn-dark rounded-pill mt-0"
+        tabIndex={1}
         onClick={() => {
           handleClick();
         }}
       >
-        Follow
+        {text}
       </span>
     </div>
   );

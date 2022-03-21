@@ -2,8 +2,10 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 function Unfollow() {
+  const [text, setText] = useState("Unfollow");
   const store = useSelector((store) => store);
   const params = useParams();
 
@@ -18,6 +20,7 @@ function Unfollow() {
         url: `${process.env.REACT_APP_URL}api/users/follow/${response.data._id}`,
         headers: { Authorization: `Bearer ${store.user.accessToken}` },
       });
+      setText("Done");
     } catch (error) {
       return alert("Sorry something went wrong, please try again later");
     }
@@ -26,11 +29,13 @@ function Unfollow() {
   return (
     <div>
       <span
+        className="btn btn-dark rounded-pill mt-0"
+        tabIndex={1}
         onClick={() => {
           handleClick();
         }}
       >
-        Unfollow
+        {text}
       </span>
     </div>
   );

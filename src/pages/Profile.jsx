@@ -7,30 +7,34 @@ import RightSidebar from "../components/RightSidebar";
 import Tweets from "../components/Tweets";
 import { updateTweets } from "../store/actions";
 import BottomNavbar from "../components/BottomNavbar";
+import Unfollow from "../components/Unfollow";
+import Follow from "../components/Follow";
 
 function Profile() {
   let navigate = useNavigate();
+  const [follow, setFollow] = useState(null);
   const [tweets, setTweets] = useState([]);
   const [user, setUser] = useState(null);
-  const [follow, setFollow] = useState("follow");
+
   const loggedUser = useSelector((store) => store.user);
   const updatedTweets = useSelector((store) => store.tweets);
   const dispatch = useDispatch();
   let params = useParams();
+  const getUser = async () => {
+    try {
+      const response = await axios({
+        url: `${process.env.REACT_APP_URL}api/users/${params.username}`,
+      });
+      setUser(response.data);
+      response.data.followers.includes(loggedUser?.id)
+        ? setFollow(<Unfollow />)
+        : setFollow(<Follow />);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    const getUser = async () => {
-      try {
-        const response = await axios({
-          url: `${process.env.REACT_APP_URL}api/users/${params.username}`,
-        });
-
-        if (response.status === 200) setUser(response.data);
-        if (response.status === 204) navigate("*");
-      } catch (error) {
-        return alert("Sorry something went wrong, please try again later");
-      }
-    };
     const getTweets = async () => {
       try {
         const response = await axios({
@@ -49,15 +53,6 @@ function Profile() {
     getTweets();
     getUser();
   }, []);
-
-  const handleFollow = () => {
-    if (user.followers.includes(loggedUser?.id)) {
-      setFollow("Follow");
-    } else {
-      setFollow("Unfollow");
-    }
-    return follow;
-  };
 
   return (
     <div>
@@ -84,14 +79,7 @@ function Profile() {
                         Edit profile
                       </button>
                     ) : (
-                      <button
-                        type="submit"
-                        className="btn btn-dark rounded-pill mt-2"
-                      >
-                        {user.followers.includes(loggedUser?.id)
-                          ? "Unfollow"
-                          : "Follow"}
-                      </button>
+                      <div className="mt-2">{follow && follow}</div>
                     )}
                   </div>
                   <div id="profile-data">

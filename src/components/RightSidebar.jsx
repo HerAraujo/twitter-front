@@ -30,14 +30,12 @@ function RightSidebar() {
                     <li className="r-sidebar-title-list">Ucrania</li>
                     <li className="r-sidebar-tags-list">
                       Trending with{" "}
-                      <span href="#" className="r-sidebar-link-list">
-                        Ukraine
-                      </span>
+                      <span className="r-sidebar-link-list">Ukraine</span>
                     </li>
                   </ul>
                 </div>
                 <div className="col-4 p-0 m-0 item">
-                  <span href="#">
+                  <span>
                     <svg viewBox="0 0 24 24" className="r-sidebar-dots-items">
                       <g>
                         <circle cx="5" cy="12" r="2"></circle>
@@ -61,7 +59,7 @@ function RightSidebar() {
                   </ul>
                 </div>
                 <div className="col-4 p-0 m-0 item">
-                  <span href="#">
+                  <span>
                     <svg viewBox="0 0 24 24" className="r-sidebar-dots-items">
                       <g>
                         <circle cx="5" cy="12" r="2"></circle>
@@ -83,7 +81,7 @@ function RightSidebar() {
                   </ul>
                 </div>
                 <div className="col-4 p-0 m-0 item">
-                  <span href="#">
+                  <span>
                     <svg viewBox="0 0 24 24" className="r-sidebar-dots-items">
                       <g>
                         <circle cx="5" cy="12" r="2"></circle>
@@ -103,14 +101,12 @@ function RightSidebar() {
                     <li className="r-sidebar-title-list">Putin</li>
                     <li className="r-sidebar-tags-list">
                       Trending with{" "}
-                      <span href="#" className="r-sidebar-link-list">
-                        Vladimir
-                      </span>
+                      <span className="r-sidebar-link-list">Vladimir</span>
                     </li>
                   </ul>
                 </div>
                 <div className="col-4 p-0 m-0 item">
-                  <span href="#">
+                  <span>
                     <svg viewBox="0 0 24 24" className="r-sidebar-dots-items">
                       <g>
                         <circle cx="5" cy="12" r="2"></circle>
@@ -136,7 +132,7 @@ function RightSidebar() {
                       </ul>
                     </div>
                     <div className="col-4 p-0 m-0 item">
-                      <span href="#">
+                      <span>
                         <svg
                           viewBox="0 0 24 24"
                           className="r-sidebar-dots-items"
@@ -163,7 +159,7 @@ function RightSidebar() {
                       </ul>
                     </div>
                     <div className="col-4 p-0 m-0 item">
-                      <span href="#">
+                      <span>
                         <svg
                           viewBox="0 0 24 24"
                           className="r-sidebar-dots-items"
@@ -190,7 +186,7 @@ function RightSidebar() {
                       </ul>
                     </div>
                     <div className="col-4 p-0 m-0 item">
-                      <span href="#">
+                      <span>
                         <svg
                           viewBox="0 0 24 24"
                           className="r-sidebar-dots-items"
