@@ -5,6 +5,7 @@
   flex-direction: row;
   justify-content: space-between;
   border-radius: 30px;
+  cursor: pointer;
 }
 .user-pill-wrapper:hover {
   background-color: #eff4f8;

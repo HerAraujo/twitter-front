@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import CreateTweet from "./CreateTweet";
+import UserPill from "./UserPill";
 
 function BottomNavbar() {
   const [show, setShow] = useState(false); // show for create tweet modal
@@ -38,17 +39,10 @@ function BottomNavbar() {
       <Link to={`/${user?.username}`}>
         <i className="navbar-icon fas fa-user fa-xl"></i>
       </Link>
-
-      <img
-        className="bottom-navbar-photo"
-        src={userInfo.profileImage}
-        alt={userInfo.username}
-        onClick={() => setShowModal((prev) => !prev)}
-      />
+      <UserPill />
       <button className="btn rounded-pill btn-primary" onClick={handleShow}>
         New Tweet
       </button>
-      {showModal && <LogoutModal />}
       <Modal show={show} onHide={handleClose}>
         <div className="d-flex justify-content-end m-2">
           <i

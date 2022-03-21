@@ -19,7 +19,7 @@ function LogoutModal({ userInfo }) {
           <div className="logout-modal-user-photo">
             <img src={userInfo.profileImage} alt={userInfo.username} />
           </div>
-          <div className="logout-modal-user-name d-none d-xl-inline-block">
+          <div className="logout-modal-user-name">
             <p>{userInfo.firstname}</p>
             <span>{`@${userInfo.username}`}</span>
           </div>

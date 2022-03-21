@@ -9,12 +9,18 @@ import { updateTweets } from "../store/actions";
 import BottomNavbar from "../components/BottomNavbar";
 import Unfollow from "../components/Unfollow";
 import Follow from "../components/Follow";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
 function Profile() {
   let navigate = useNavigate();
   const [follow, setFollow] = useState("");
   const [tweets, setTweets] = useState([]);
   const [user, setUser] = useState(null);
+  const renderTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Not Avaible
+    </Tooltip>
+  );
 
   const loggedUser = useSelector((store) => store.user);
   const updatedTweets = useSelector((store) => store.tweets);
@@ -74,9 +80,15 @@ function Profile() {
                       alt="profile photo"
                     />
                     {loggedUser?.username === params.username ? (
-                      <button className="btn btn-dark rounded-pill mt-2">
-                        Edit profile
-                      </button>
+                      <OverlayTrigger
+                        placement="bottom"
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={renderTooltip}
+                      >
+                        <button className="btn btn-dark rounded-pill mt-2">
+                          Edit profile
+                        </button>
+                      </OverlayTrigger>
                     ) : (
                       <div
                         className="mt-2"
