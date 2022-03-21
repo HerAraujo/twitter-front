@@ -19,8 +19,7 @@ function Follow() {
         headers: { Authorization: `Bearer ${store.user.accessToken}` },
       });
     } catch (error) {
-      console.log(error);
-      <NotFound />;
+      return alert("Sorry something went wrong, please try again later");
     }
   };
 

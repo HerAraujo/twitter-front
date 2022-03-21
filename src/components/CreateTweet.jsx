@@ -22,7 +22,7 @@ function CreateTweet({ handleClose }) {
         });
         setLoggedUser(response.data);
       } catch (error) {
-        console.log(error);
+        return alert("Sorry something went wrong, please try again later");
       }
     };
     getUser();
@@ -45,7 +45,7 @@ function CreateTweet({ handleClose }) {
       dispatch(storeTweet(response.data.newTweet));
       handleClose();
     } catch (error) {
-      console.log(error);
+      return alert("Sorry something went wrong, please try again later");
     }
   };
   const countChart = (chart) => {

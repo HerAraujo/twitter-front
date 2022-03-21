@@ -1,32 +1,37 @@
 import axios from "axios";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { unlike, like } from "../store/actions";
 
 function Like({ tweet, user }) {
   const distpatch = useDispatch();
-
+  const navigate = useNavigate();
   const handleLike = async () => {
-    if (tweet.likes.includes(user.id)) {
-      try {
-        await axios({
-          method: "DELETE",
-          url: `${process.env.REACT_APP_URL}api/tweets/like/${tweet._id}`,
-          headers: { Authorization: `Bearer ${user.accessToken}` },
-        });
-        distpatch(unlike(tweet, user));
-      } catch (error) {
-        console.log(error);
-      }
+    if (!user) {
+      navigate("/");
     } else {
-      try {
-        await axios({
-          method: "POST",
-          url: `${process.env.REACT_APP_URL}api/tweets/like/${tweet._id}`,
-          headers: { Authorization: `Bearer ${user.accessToken}` },
-        });
-        distpatch(like(tweet, user));
-      } catch (error) {
-        console.log(error);
+      if (tweet.likes.includes(user.id)) {
+        try {
+          await axios({
+            method: "DELETE",
+            url: `${process.env.REACT_APP_URL}api/tweets/like/${tweet._id}`,
+            headers: { Authorization: `Bearer ${user.accessToken}` },
+          });
+          distpatch(unlike(tweet, user));
+        } catch (error) {
+          return alert("Sorry something went wrong, please try again later");
+        }
+      } else {
+        try {
+          await axios({
+            method: "POST",
+            url: `${process.env.REACT_APP_URL}api/tweets/like/${tweet._id}`,
+            headers: { Authorization: `Bearer ${user.accessToken}` },
+          });
+          distpatch(like(tweet, user));
+        } catch (error) {
+          return alert("Sorry something went wrong, please try again later");
+        }
       }
     }
   };

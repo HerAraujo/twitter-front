@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import NotFound from "../pages/NotFound";
+
 import { useSelector } from "react-redux";
 
 function Unfollow() {
@@ -19,8 +19,7 @@ function Unfollow() {
         headers: { Authorization: `Bearer ${store.user.accessToken}` },
       });
     } catch (error) {
-      console.log(error);
-      <NotFound />;
+      return alert("Sorry something went wrong, please try again later");
     }
   };
 

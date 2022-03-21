@@ -24,7 +24,7 @@ function Home() {
         });
         setTweets(response.data.tweets);
       } catch (error) {
-        console.log(error);
+        return alert("Sorry something went wrong, please try again later");
       }
     };
     getTweets();

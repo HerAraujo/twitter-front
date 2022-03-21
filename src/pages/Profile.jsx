@@ -1,15 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import LeftSidebar from "../components/LeftSidebar";
 import RightSidebar from "../components/RightSidebar";
 import Tweets from "../components/Tweets";
-import NotFound from "./NotFound";
 import { updateTweets } from "../store/actions";
 import BottomNavbar from "../components/BottomNavbar";
 
 function Profile() {
+  let navigate = useNavigate();
   const [tweets, setTweets] = useState([]);
   const [user, setUser] = useState(null);
   const [follow, setFollow] = useState("follow");
@@ -24,10 +24,11 @@ function Profile() {
         const response = await axios({
           url: `${process.env.REACT_APP_URL}api/users/${params.username}`,
         });
-        setUser(response.data);
+
+        if (response.status === 200) setUser(response.data);
+        if (response.status === 204) navigate("*");
       } catch (error) {
-        console.log(error);
-        <NotFound />;
+        return alert("Sorry something went wrong, please try again later");
       }
     };
     const getTweets = async () => {
@@ -35,18 +36,19 @@ function Profile() {
         const response = await axios({
           url: `${process.env.REACT_APP_URL}api/tweets/${params.username}`,
         });
-
-        setTweets(response.data.tweets);
+        if (response.status === 200) {
+          setTweets(response.data.tweets);
+          dispatch(updateTweets(tweets));
+        }
+        if (response.status === 204) navigate("*");
       } catch (error) {
-        console.log(error);
+        return alert("Sorry something went wrong, please try again later");
       }
     };
 
     getTweets();
     getUser();
   }, []);
-
-  useEffect(() => dispatch(updateTweets(tweets)), [tweets]);
 
   const handleFollow = () => {
     if (user.followers.includes(loggedUser?.id)) {

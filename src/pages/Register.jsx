@@ -44,7 +44,7 @@ function Register() {
         navigate("/login");
       }
     } catch (error) {
-      console.log(error);
+      return alert("Sorry something went wrong, please try again later");
     }
   };
   return (

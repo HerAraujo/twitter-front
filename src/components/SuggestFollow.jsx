@@ -6,8 +6,12 @@ function SuggestFollow() {
   const [users, setUsers] = useState([]);
 
   const getUsers = async () => {
-    const { data } = await axios.get(`${process.env.REACT_APP_URL}api/users`);
-    setUsers(data.sort());
+    try {
+      const { data } = await axios.get(`${process.env.REACT_APP_URL}api/users`);
+      setUsers(data.sort());
+    } catch (error) {
+      return alert("Sorry something went wrong, please try again later");
+    }
   };
   const usersToSuggest = users.slice(0, 3);
   useEffect(() => {

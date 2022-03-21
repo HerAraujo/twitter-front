@@ -18,10 +18,14 @@ function BottomNavbar() {
 
   useEffect(() => {
     const getUser = async () => {
-      const { data } = await axios.get(
-        `${process.env.REACT_APP_URL}api/users/${user?.username}`
-      );
-      setUserInfo(data);
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_URL}api/users/${user?.username}`
+        );
+        if (response.status === 200) setUserInfo(response.data);
+      } catch (error) {
+        return alert("Sorry something went wrong, please try again later");
+      }
     };
     getUser();
   }, []);

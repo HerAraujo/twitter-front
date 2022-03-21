@@ -11,10 +11,14 @@ function UserPill() {
 
   useEffect(() => {
     const getUser = async () => {
-      const { data } = await axios.get(
-        `${process.env.REACT_APP_URL}api/users/${user?.username}`
-      );
-      setUserInfo(data);
+      try {
+        const { data } = await axios.get(
+          `${process.env.REACT_APP_URL}api/users/${user?.username}`
+        );
+        setUserInfo(data);
+      } catch (error) {
+        return alert("Sorry something went wrong, please try again later");
+      }
     };
     getUser();
   }, []);

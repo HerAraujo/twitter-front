@@ -29,7 +29,9 @@ function Login() {
       setPassword("");
       if (response.status === 200) navigate("/home");
     } catch (error) {
-      setcredentialsAreCorrect(false);
+      if (error.response.status === 401) {
+        setcredentialsAreCorrect(false);
+      } else return alert("Sorry something went wrong, please try again later");
     }
   };
   return (
