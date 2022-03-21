@@ -3,6 +3,7 @@ import "./Welcome.css";
 import { Link } from "react-router-dom";
 
 function Welcome() {
+  console.log(process.env.REACT_APP_URL);
   return (
     <div className="package">
       <div className="hidden-footer">

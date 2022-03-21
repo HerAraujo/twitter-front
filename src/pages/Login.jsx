@@ -17,7 +17,7 @@ function Login() {
       event.preventDefault();
       const response = await axios({
         method: "POST",
-        url: "http://localhost:8000/api/token",
+        url: `${process.env.REACT_APP_URL}api/token`,
         data: {
           username: username,
           password: password,

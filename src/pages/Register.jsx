@@ -19,7 +19,7 @@ function Register() {
       event.preventDefault();
       const response = await axios({
         method: "POST",
-        url: "http://localhost:8000/api/users",
+        url: `${process.env.REACT_APP_URL}api/users`,
         data: {
           firstname: firstname,
           lastname: lastname,

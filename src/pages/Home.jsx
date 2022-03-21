@@ -19,7 +19,7 @@ function Home() {
     const getTweets = async () => {
       try {
         const response = await axios({
-          url: `http://localhost:8000/api/tweets/following/${store.user.id}`,
+          url: `${process.env.REACT_APP_URL}api/tweets/following/${store.user.id}`,
           headers: { Authorization: `Bearer ${store.user.accessToken}` },
         });
         setTweets(response.data.tweets);

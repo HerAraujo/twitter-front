@@ -12,7 +12,7 @@ function Like({ tweet, user }) {
       try {
         await axios({
           method: "DELETE",
-          url: `http://localhost:8000/api/tweets/like/${tweet._id}`,
+          url: `${process.env.REACT_APP_URL}api/tweets/like/${tweet._id}`,
           headers: { Authorization: `Bearer ${user.accessToken}` },
         });
         distpatch(unlike(tweet, user));
@@ -23,7 +23,7 @@ function Like({ tweet, user }) {
       try {
         await axios({
           method: "POST",
-          url: `http://localhost:8000/api/tweets/like/${tweet._id}`,
+          url: `${process.env.REACT_APP_URL}api/tweets/like/${tweet._id}`,
           headers: { Authorization: `Bearer ${user.accessToken}` },
         });
         distpatch(like(tweet, user));

@@ -18,7 +18,7 @@ function CreateTweet({ handleClose }) {
     const getUser = async () => {
       try {
         const response = await axios({
-          url: `http://localhost:8000/api/users/${user.username}`,
+          url: `${process.env.REACT_APP_URL}api/users/${user.username}`,
         });
         setLoggedUser(response.data);
       } catch (error) {
@@ -34,7 +34,7 @@ function CreateTweet({ handleClose }) {
       event.preventDefault();
       const response = await axios({
         method: "POST",
-        url: "http://localhost:8000/api/tweets",
+        url: `${process.env.REACT_APP_URL}api/tweets`,
         headers: { Authorization: `Bearer ${user.accessToken}` },
         data: {
           content: content,
