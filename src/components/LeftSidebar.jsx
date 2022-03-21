@@ -4,12 +4,18 @@ import { useSelector } from "react-redux";
 import { Modal } from "react-bootstrap";
 import { useState } from "react";
 import CreateTweet from "./CreateTweet";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
 function LeftSidebar() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const user = useSelector((store) => store.user);
+  const renderTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Not Avaible
+    </Tooltip>
+  );
   return (
     <div className="left-sidebar d-none d-sm-flex flex-column justify-content-between align-items-start p-3 position-fixed h-100">
       <div className="row h-100">
@@ -39,32 +45,50 @@ function LeftSidebar() {
               <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start">
                 <span>
                   <i className="navbar-icon fas fa-hashtag"></i>
-                  <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
-                    Explore
-                  </span>
+                  <OverlayTrigger
+                    placement="right"
+                    delay={{ show: 250, hide: 400 }}
+                    overlay={renderTooltip}
+                  >
+                    <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
+                      Explore
+                    </span>
+                  </OverlayTrigger>
                 </span>
               </h3>
 
               <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start">
                 <span>
                   <i className="navbar-icon fas fa-bell"></i>
-                  <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
-                    Notifications
-                  </span>
+                  <OverlayTrigger
+                    placement="right"
+                    delay={{ show: 250, hide: 400 }}
+                    overlay={renderTooltip}
+                  >
+                    <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
+                      Notifications
+                    </span>
+                  </OverlayTrigger>
                 </span>
               </h3>
 
               <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start">
                 <span>
                   <i className="navbar-icon fas fa-inbox"></i>
-                  <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
-                    Messages
-                  </span>
+                  <OverlayTrigger
+                    placement="right"
+                    delay={{ show: 250, hide: 400 }}
+                    overlay={renderTooltip}
+                  >
+                    <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
+                      Messages
+                    </span>
+                  </OverlayTrigger>
                 </span>
               </h3>
 
               <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start">
-                <a
+                <h3
                   className="text-decoration-none"
                   data-bs-toggle="tooltip"
                   data-bs-placement="top"
@@ -72,18 +96,30 @@ function LeftSidebar() {
                   href=""
                 >
                   <i className="navbar-icon fas fa-bookmark"></i>
-                  <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
-                    Bookmarks
-                  </span>
-                </a>
+                  <OverlayTrigger
+                    placement="right"
+                    delay={{ show: 250, hide: 400 }}
+                    overlay={renderTooltip}
+                  >
+                    <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
+                      Bookmarks
+                    </span>
+                  </OverlayTrigger>
+                </h3>
               </h3>
 
               <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start">
                 <span>
                   <i className="navbar-icon fas fa-list-alt"></i>
-                  <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
-                    Lists
-                  </span>
+                  <OverlayTrigger
+                    placement="right"
+                    delay={{ show: 250, hide: 400 }}
+                    overlay={renderTooltip}
+                  >
+                    <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
+                      Lists
+                    </span>
+                  </OverlayTrigger>
                 </span>
               </h3>
 
