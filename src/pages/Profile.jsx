@@ -22,7 +22,7 @@ function Profile() {
     const getUser = async () => {
       try {
         const response = await axios({
-          url: `http://localhost:8000/api/users/${params.username}`,
+          url: `${process.env.REACT_APP_URL}api/users/${params.username}`,
         });
         setUser(response.data);
       } catch (error) {
@@ -33,7 +33,7 @@ function Profile() {
     const getTweets = async () => {
       try {
         const response = await axios({
-          url: `http://localhost:8000/api/tweets/${params.username}`,
+          url: `${process.env.REACT_APP_URL}api/tweets/${params.username}`,
         });
 
         setTweets(response.data.tweets);

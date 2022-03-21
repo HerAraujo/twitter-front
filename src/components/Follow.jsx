@@ -10,12 +10,12 @@ function Follow() {
   const handleClick = async () => {
     try {
       const response = await axios({
-        url: `http://localhost:8000/api/users/${params.username}`,
+        url: `${process.env.REACT_APP_URL}api/users/${params.username}`,
       });
 
       const makeFollow = await axios({
         method: "POST",
-        url: `http://localhost:8000/api/users/follow/${response.data._id}`,
+        url: `${process.env.REACT_APP_URL}api/users/follow/${response.data._id}`,
         headers: { Authorization: `Bearer ${store.user.accessToken}` },
       });
     } catch (error) {

@@ -19,7 +19,7 @@ function BottomNavbar() {
   useEffect(() => {
     const getUser = async () => {
       const { data } = await axios.get(
-        `http://localhost:8000/api/users/${user?.username}`
+        `${process.env.REACT_APP_URL}api/users/${user?.username}`
       );
       setUserInfo(data);
     };

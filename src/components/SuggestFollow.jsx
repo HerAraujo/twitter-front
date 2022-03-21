@@ -6,7 +6,7 @@ function SuggestFollow() {
   const [users, setUsers] = useState([]);
 
   const getUsers = async () => {
-    const { data } = await axios.get("http://localhost:8000/api/users");
+    const { data } = await axios.get(`${process.env.REACT_APP_URL}api/users`);
     setUsers(data.sort());
   };
   const usersToSuggest = users.slice(0, 3);

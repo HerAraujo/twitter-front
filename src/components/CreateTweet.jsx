@@ -10,7 +10,7 @@ function CreateTweet({ handleClose }) {
 
   const [loggedUser, setLoggedUser] = useState("");
   const [content, setContent] = useState("");
-  const [chartLeft, setChartLeft] = useState(280);
+  const [chartLeft, setChartLeft] = useState(0);
 
   const dispatch = useDispatch();
 
@@ -18,7 +18,7 @@ function CreateTweet({ handleClose }) {
     const getUser = async () => {
       try {
         const response = await axios({
-          url: `http://localhost:8000/api/users/${user.username}`,
+          url: `${process.env.REACT_APP_URL}api/users/${user.username}`,
         });
         setLoggedUser(response.data);
       } catch (error) {
@@ -34,7 +34,7 @@ function CreateTweet({ handleClose }) {
       event.preventDefault();
       const response = await axios({
         method: "POST",
-        url: "http://localhost:8000/api/tweets",
+        url: `${process.env.REACT_APP_URL}api/tweets`,
         headers: { Authorization: `Bearer ${user.accessToken}` },
         data: {
           content: content,
@@ -49,7 +49,7 @@ function CreateTweet({ handleClose }) {
     }
   };
   const countChart = (chart) => {
-    setChartLeft(280 - chart.length);
+    setChartLeft(chart.length);
   };
 
   return (
@@ -78,8 +78,9 @@ function CreateTweet({ handleClose }) {
               setContent(event.target.value);
             }}
           />
-          <p>{chartLeft} Characters left</p>
-          <div className="p-2 mt-2 d-flex justify-content-end border-top">
+
+          <div className="p-2 mt-2 d-flex justify-content-end flex-column text-muted align-items-end border-top">
+            <p>{chartLeft}/280</p>
             <button className="btn btn-primary rounded-pill" type="submit">
               Tweet
             </button>

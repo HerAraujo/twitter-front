@@ -1,18 +1,16 @@
 import axios from "axios";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { unlike, like } from "../store/actions";
 
 function Like({ tweet, user }) {
   const distpatch = useDispatch();
-  const [likeColor, setLikeColor] = useState();
 
   const handleLike = async () => {
     if (tweet.likes.includes(user.id)) {
       try {
         await axios({
           method: "DELETE",
-          url: `http://localhost:8000/api/tweets/like/${tweet._id}`,
+          url: `${process.env.REACT_APP_URL}api/tweets/like/${tweet._id}`,
           headers: { Authorization: `Bearer ${user.accessToken}` },
         });
         distpatch(unlike(tweet, user));
@@ -23,7 +21,7 @@ function Like({ tweet, user }) {
       try {
         await axios({
           method: "POST",
-          url: `http://localhost:8000/api/tweets/like/${tweet._id}`,
+          url: `${process.env.REACT_APP_URL}api/tweets/like/${tweet._id}`,
           headers: { Authorization: `Bearer ${user.accessToken}` },
         });
         distpatch(like(tweet, user));
