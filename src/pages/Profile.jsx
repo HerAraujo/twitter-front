@@ -16,6 +16,7 @@ function Profile() {
   const [follow, setFollow] = useState("");
   const [tweets, setTweets] = useState([]);
   const [user, setUser] = useState(null);
+  const [followers, setFollowers] = useState("");
   const renderTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
       Not Avaible
@@ -32,6 +33,7 @@ function Profile() {
         url: `${process.env.REACT_APP_URL}api/users/${params.username}`,
       });
       setUser(response.data);
+      setFollowers(response.data.followers.length);
       response.data.followers.includes(loggedUser?.id)
         ? setFollow(true)
         : setFollow(false);
@@ -92,7 +94,14 @@ function Profile() {
                     ) : (
                       <div
                         className="mt-2"
-                        onClick={() => setFollow((prev) => !prev)}
+                        onClick={() => {
+                          {
+                            follow
+                              ? setFollowers((prev) => prev - 1)
+                              : setFollowers((prev) => prev + 1);
+                          }
+                          setFollow((prev) => !prev);
+                        }}
                       >
                         {follow ? <Unfollow /> : <Follow />}
                       </div>
@@ -120,9 +129,7 @@ function Profile() {
                         <span className="text-muted">Following</span>
                       </p>
                       <p>
-                        <span className="fw-bold me-1">
-                          {user.followers.length}
-                        </span>
+                        <span className="fw-bold me-1">{followers}</span>
                         <span className="text-muted">Followers</span>
                       </p>
                     </div>
