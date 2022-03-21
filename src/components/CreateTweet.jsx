@@ -10,6 +10,7 @@ function CreateTweet({ handleClose }) {
 
   const [loggedUser, setLoggedUser] = useState("");
   const [content, setContent] = useState("");
+  const [chartLength, setChartLength] = useState(280);
 
   const dispatch = useDispatch();
 
@@ -47,6 +48,9 @@ function CreateTweet({ handleClose }) {
       console.log(error);
     }
   };
+  const countChart = (chart) => {
+    setChartLength(280 - chart.length);
+  };
 
   return (
     <div className="row create-tweet-tweet-card d-flex p-4">
@@ -67,9 +71,14 @@ function CreateTweet({ handleClose }) {
             name="content"
             id="content"
             placeholder="What's happening?"
+            maxLength="280"
             required
-            onChange={(event) => setContent(event.target.value)}
+            onChange={(event) => {
+              countChart(event.target.value);
+              setContent(event.target.value);
+            }}
           />
+          <p>Te quedan: {chartLength} caracteres</p>
           <div className="p-2 mt-2 d-flex justify-content-end border-top">
             <button className="btn btn-primary rounded-pill" type="submit">
               Tweet
