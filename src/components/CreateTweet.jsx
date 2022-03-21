@@ -59,7 +59,7 @@ function CreateTweet({ handleClose }) {
         <img
           className="create-tweet-user-photo"
           src={loggedUser.profileImage}
-          alt="user-photo"
+          alt="user"
         />
       </div>
       <div className="col-xs-7 col-10">

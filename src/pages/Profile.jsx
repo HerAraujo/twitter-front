@@ -77,7 +77,7 @@ function Profile() {
                     <img
                       className="col-3 user-profile-photo"
                       src={user.profileImage}
-                      alt="profile photo"
+                      alt="profile"
                     />
                     {loggedUser?.username === params.username ? (
                       <OverlayTrigger
@@ -110,9 +110,9 @@ function Profile() {
                     </p>
                     <p className="text-muted text-start">
                       <i className="fa-solid fa-calendar-days text-muted words-distance"></i>{" "}
-                      Joined February 2022
+                      Joined March 2022
                     </p>
-                    <div className="d-sm-flex words-distance">
+                    <div className="d-sm-flex words-distance text-start">
                       <p className="me-3">
                         <span className="fw-bold me-1">
                           {user.following.length}
@@ -128,33 +128,33 @@ function Profile() {
                     </div>
                   </div>
                   <div className="row">
-                    <a className="col-3 text-center profile-btn btn btn-outline">
+                    <button className="col-3 text-center profile-btn btn btn-outline">
                       Tweets
-                    </a>
-                    <a
+                    </button>
+                    <button
                       className="col-4 text-center profile-btn btn btn-outline"
                       data-bs-toggle="tooltip"
                       data-bs-placement="top"
                       title="Lo sentimos, esta funcionalidad escapa del alcance de nuestro proyecto"
                     >
                       Tweets & replies
-                    </a>
-                    <a
+                    </button>
+                    <button
                       className="col-2 text-center profile-btn btn btn-outline"
                       data-bs-toggle="tooltip"
                       data-bs-placement="top"
                       title="Lo sentimos, esta funcionalidad escapa del alcance de nuestro proyecto"
                     >
                       Media
-                    </a>
-                    <a
+                    </button>
+                    <button
                       className="col-3 text-center btn btn-outline profile-btn"
                       data-bs-toggle="tooltip"
                       data-bs-placement="top"
                       title="Lo sentimos, esta funcionalidad escapa del alcance de nuestro proyecto"
                     >
                       <div>Likes</div>
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
