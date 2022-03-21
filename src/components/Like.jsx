@@ -1,11 +1,9 @@
 import axios from "axios";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { unlike, like } from "../store/actions";
 
 function Like({ tweet, user }) {
   const distpatch = useDispatch();
-  const [likeColor, setLikeColor] = useState();
 
   const handleLike = async () => {
     if (tweet.likes.includes(user.id)) {
