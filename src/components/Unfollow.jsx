@@ -13,7 +13,7 @@ function Unfollow() {
         url: `http://localhost:8000/api/users/${params.username}`,
       });
 
-      const makeUnfollow = await axios({
+      await axios({
         method: "DELETE",
         url: `http://localhost:8000/api/users/follow/${response.data._id}`,
         headers: { Authorization: `Bearer ${store.user.accessToken}` },

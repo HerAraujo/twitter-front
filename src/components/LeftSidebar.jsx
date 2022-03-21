@@ -42,86 +42,80 @@ function LeftSidebar() {
                 </Link>
               </h3>
 
-              <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start">
-                <span>
-                  <i className="navbar-icon fas fa-hashtag"></i>
-                  <OverlayTrigger
-                    placement="right"
-                    delay={{ show: 250, hide: 400 }}
-                    overlay={renderTooltip}
-                  >
+              <OverlayTrigger
+                placement="bottom"
+                delay={{ show: 250, hide: 400 }}
+                overlay={renderTooltip}
+              >
+                <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start">
+                  <span>
+                    <i className="navbar-icon fas fa-hashtag"></i>
                     <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
                       Explore
                     </span>
-                  </OverlayTrigger>
-                </span>
-              </h3>
+                  </span>
+                </h3>
+              </OverlayTrigger>
 
-              <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start">
-                <span>
-                  <i className="navbar-icon fas fa-bell"></i>
-                  <OverlayTrigger
-                    placement="right"
-                    delay={{ show: 250, hide: 400 }}
-                    overlay={renderTooltip}
-                  >
+              <OverlayTrigger
+                placement="bottom"
+                delay={{ show: 250, hide: 400 }}
+                overlay={renderTooltip}
+              >
+                <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start">
+                  <span>
+                    <i className="navbar-icon fas fa-bell"></i>
                     <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
                       Notifications
                     </span>
-                  </OverlayTrigger>
-                </span>
-              </h3>
+                  </span>
+                </h3>
+              </OverlayTrigger>
 
-              <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start">
-                <span>
-                  <i className="navbar-icon fas fa-inbox"></i>
-                  <OverlayTrigger
-                    placement="right"
-                    delay={{ show: 250, hide: 400 }}
-                    overlay={renderTooltip}
-                  >
+              <OverlayTrigger
+                placement="bottom"
+                delay={{ show: 250, hide: 400 }}
+                overlay={renderTooltip}
+              >
+                <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start">
+                  <span>
+                    <i className="navbar-icon fas fa-inbox"></i>
                     <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
                       Messages
                     </span>
-                  </OverlayTrigger>
-                </span>
-              </h3>
-
-              <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start">
-                <h3
-                  className="text-decoration-none"
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="top"
-                  title="Lo sentimos, esta funcionalidad escapa del alcance de nuestro proyecto"
-                  href=""
-                >
-                  <i className="navbar-icon fas fa-bookmark"></i>
-                  <OverlayTrigger
-                    placement="right"
-                    delay={{ show: 250, hide: 400 }}
-                    overlay={renderTooltip}
-                  >
-                    <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
-                      Bookmarks
-                    </span>
-                  </OverlayTrigger>
+                  </span>
                 </h3>
-              </h3>
+              </OverlayTrigger>
 
-              <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start">
-                <span>
-                  <i className="navbar-icon fas fa-list-alt"></i>
-                  <OverlayTrigger
-                    placement="right"
-                    delay={{ show: 250, hide: 400 }}
-                    overlay={renderTooltip}
-                  >
+              <OverlayTrigger
+                placement="bottom"
+                delay={{ show: 250, hide: 400 }}
+                overlay={renderTooltip}
+              >
+                <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start">
+                  <i className="navbar-icon fas fa-bookmark"></i>
+
+                  <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
+                    Bookmarks
+                  </span>
+                </h3>
+              </OverlayTrigger>
+
+              <OverlayTrigger
+                placement="bottom"
+                delay={{ show: 250, hide: 400 }}
+                overlay={renderTooltip}
+              >
+                <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start">
+                  <span>
+                    <i className="navbar-icon fas fa-list-alt"></i>
+
                     <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
                       Lists
                     </span>
-                  </OverlayTrigger>
-                </span>
-              </h3>
+                  </span>
+                </h3>
+              </OverlayTrigger>
 
               <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start align-items-center">
                 <Link to={`/${user?.username}`}>
