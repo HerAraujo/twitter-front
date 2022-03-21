@@ -12,7 +12,7 @@ import Follow from "../components/Follow";
 
 function Profile() {
   let navigate = useNavigate();
-  const [follow, setFollow] = useState(null);
+  const [follow, setFollow] = useState("");
   const [tweets, setTweets] = useState([]);
   const [user, setUser] = useState(null);
 
@@ -27,8 +27,8 @@ function Profile() {
       });
       setUser(response.data);
       response.data.followers.includes(loggedUser?.id)
-        ? setFollow(<Unfollow />)
-        : setFollow(<Follow />);
+        ? setFollow(true)
+        : setFollow(false);
     } catch (error) {
       console.log(error);
     }
@@ -42,7 +42,6 @@ function Profile() {
         });
         if (response.status === 200) {
           setTweets(response.data.tweets);
-          dispatch(updateTweets(tweets));
         }
         if (response.status === 204) navigate("*");
       } catch (error) {
@@ -53,7 +52,7 @@ function Profile() {
     getTweets();
     getUser();
   }, []);
-
+  useEffect(() => dispatch(updateTweets(tweets)), [tweets]);
   return (
     <div>
       {user && (
@@ -79,7 +78,12 @@ function Profile() {
                         Edit profile
                       </button>
                     ) : (
-                      <div className="mt-2">{follow && follow}</div>
+                      <div
+                        className="mt-2"
+                        onClick={() => setFollow((prev) => !prev)}
+                      >
+                        {follow ? <Unfollow /> : <Follow />}
+                      </div>
                     )}
                   </div>
                   <div id="profile-data">
