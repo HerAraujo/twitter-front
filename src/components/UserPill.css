@@ -41,6 +41,7 @@
   aspect-ratio: 1;
   border-radius: 50%;
   margin: 0.5rem;
+  object-fit: cover;
 }
 .user-pill-modal-dots-items {
   width: 20px;
