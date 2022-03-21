@@ -10,6 +10,9 @@ import { updateTweets } from "../store/actions";
 import BottomNavbar from "../components/BottomNavbar";
 
 function Home() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+
   const [tweets, setTweets] = useState([]);
   const store = useSelector((store) => store);
   const updatedTweets = useSelector((store) => store.tweets);
@@ -38,7 +41,7 @@ function Home() {
           <LeftSidebar />
         </div>
         <div className="col-12 col-sm-9 col-lg-6 home-border">
-          <CreateTweet />
+          <CreateTweet handleClose={handleClose} />
           <Tweets tweets={updatedTweets} />
         </div>
         <div className="col-lg-3 d-none d-lg-inline-block right-sidebar">

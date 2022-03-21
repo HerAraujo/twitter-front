@@ -72,6 +72,7 @@ function CreateTweet({ handleClose }) {
             id="content"
             placeholder="What's happening?"
             maxLength="280"
+            value={content}
             required
             onChange={(event) => {
               countChart(event.target.value);
