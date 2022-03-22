@@ -114,9 +114,7 @@ function Profile() {
                     <h3 className="text-start d-block text-muted fs-6 words-distance">
                       @{user.username}
                     </h3>
-                    <p className="text-start mt-4 words-distance">
-                      Frase que elige el usuario
-                    </p>
+
                     <p className="text-muted text-start">
                       <i className="fa-solid fa-calendar-days text-muted words-distance"></i>{" "}
                       Joined March 2022

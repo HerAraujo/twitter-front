@@ -16,6 +16,12 @@ function storeTweet(tweet) {
     payload: { tweet },
   };
 }
+function removeTweet(tweet) {
+  return {
+    type: "REMOVE_TWEET",
+    payload: { tweet },
+  };
+}
 function like(tweet, user) {
   return {
     type: "LIKE",
@@ -29,4 +35,4 @@ function unlike(tweet, user) {
   };
 }
 
-export { logIn, updateTweets, storeTweet, like, unlike };
+export { logIn, updateTweets, storeTweet, removeTweet, like, unlike };

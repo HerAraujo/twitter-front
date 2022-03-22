@@ -2,8 +2,12 @@ function tweetsReducer(state = [], action) {
   switch (action.type) {
     case "UPDATE_TWEETS":
       return action.payload.tweets;
+
     case "STORE_TWEET":
       return [action.payload.tweet, ...state];
+
+    case "REMOVE_TWEET":
+      return state.filter((tweet) => tweet._id !== action.payload.tweet._id);
 
     case "LIKE":
       return state.map((tweet) => {

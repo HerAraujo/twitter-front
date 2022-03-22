@@ -5,6 +5,12 @@
   flex-shrink: 0;
   gap: 1rem;
 }
+.sg-follow-content:hover {
+  background-color: #eff4f8;
+}
+.sg-follow-wrapper > * :hover {
+  color: black;
+}
 .sg-follow-content {
   display: flex;
   flex-direction: row;

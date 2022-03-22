@@ -1,9 +1,26 @@
-import { useSelector } from "react-redux";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { removeTweet } from "../store/actions";
 import Like from "./Like";
 import "./Tweet.css";
 
 function Tweet({ tweet }) {
+  const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
+
+  const deleteTweet = async () => {
+    try {
+      const response = await axios({
+        method: "DELETE",
+        url: `${process.env.REACT_APP_URL}api/tweets/${tweet._id}`,
+        headers: { Authorization: `Bearer ${user.accessToken}` },
+      });
+      console.log(response);
+      dispatch(removeTweet(tweet));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="row tweet-card p-4">
@@ -11,7 +28,7 @@ function Tweet({ tweet }) {
         <img
           className="user-photo"
           src={tweet.author.profileImage}
-          alt="user-photo"
+          alt="user"
         />
       </div>
 
@@ -19,27 +36,26 @@ function Tweet({ tweet }) {
         <div className="d-flex justify-content-between">
           <div>
             <a
-              className="text-decoration-none"
+              className="text-decoration-none d-flex flex-wrap justify-content-start"
               href={`/${tweet.author.username}`}
             >
               <h3 className="d-inline-block fs-6 me-2 text-dark">
                 {tweet.author.firstname} {tweet.author.lastname}
               </h3>
-              <h3 className="d-inline-block text-muted fs-6">
+              <p className="d-inline-block text-muted fs-6">
                 @{tweet.author.username}
-              </h3>
+              </p>
             </a>
           </div>
           <div>
             {tweet.author.username === user?.username && (
-              <form action={`/api/delete/${tweet.id}`} method="DELETE">
-                <button
-                  className="btn btn-outline-muted text-muted"
-                  type="submit"
-                >
-                  <i className="fa-solid fa-xmark"></i>
-                </button>
-              </form>
+              <button
+                onClick={deleteTweet}
+                className="btn btn-outline-muted text-muted"
+                type="submit"
+              >
+                <i className="fa-solid fa-xmark"></i>
+              </button>
             )}
           </div>
         </div>
