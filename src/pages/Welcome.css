@@ -68,6 +68,16 @@
   border-width: thin;
   border-color: rgb(207, 217, 222);
 }
+.startBtn3 {
+  border-style: none;
+  height: 50px;
+  border-radius: 2rem;
+  font-weight: bold;
+  border: solid;
+  border-width: thin;
+  color: white;
+  background-color: #212121;
+}
 
 .term-policy {
   font-size: x-small;

@@ -1,6 +1,7 @@
 import React from "react";
 import "./Welcome.css";
 import { Link } from "react-router-dom";
+import TryDemo from "../components/TryDemo";
 
 function Welcome() {
   return (
@@ -47,6 +48,7 @@ function Welcome() {
             </button>
           </Link>
         </div>
+        <TryDemo />
         <div className="label-to-hide mt-auto">
           <span className="label-group">
             Made by: Florencia Biazzi, Hernán Araújo and Luis Álvarez.
