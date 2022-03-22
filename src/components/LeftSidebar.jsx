@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Modal } from "react-bootstrap";
 import { useState } from "react";
 import CreateTweet from "./CreateTweet";
+import "./LeftSidebar.css";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
 function LeftSidebar() {
@@ -47,7 +48,7 @@ function LeftSidebar() {
                 delay={{ show: 250, hide: 400 }}
                 overlay={renderTooltip}
               >
-                <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start">
+                <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start l-sidebar-cursor">
                   <span>
                     <i className="navbar-icon fas fa-hashtag"></i>
                     <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
@@ -62,7 +63,7 @@ function LeftSidebar() {
                 delay={{ show: 250, hide: 400 }}
                 overlay={renderTooltip}
               >
-                <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start">
+                <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start l-sidebar-cursor">
                   <span>
                     <i className="navbar-icon fas fa-bell"></i>
                     <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
@@ -77,7 +78,7 @@ function LeftSidebar() {
                 delay={{ show: 250, hide: 400 }}
                 overlay={renderTooltip}
               >
-                <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start">
+                <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start l-sidebar-cursor">
                   <span>
                     <i className="navbar-icon fas fa-inbox"></i>
                     <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
@@ -92,7 +93,7 @@ function LeftSidebar() {
                 delay={{ show: 250, hide: 400 }}
                 overlay={renderTooltip}
               >
-                <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start">
+                <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start l-sidebar-cursor">
                   <i className="navbar-icon fas fa-bookmark"></i>
 
                   <span className="d-none d-xl-inline-block text-dark fs-5 fw-normal ms-2">
@@ -106,7 +107,7 @@ function LeftSidebar() {
                 delay={{ show: 250, hide: 400 }}
                 overlay={renderTooltip}
               >
-                <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start">
+                <h3 className="navbar-links rounded-pill px-4 py-2 d-flex justify-content-start l-sidebar-cursor">
                   <span>
                     <i className="navbar-icon fas fa-list-alt"></i>
 

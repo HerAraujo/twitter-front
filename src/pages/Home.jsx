@@ -8,6 +8,7 @@ import Tweets from "../components/Tweets";
 import CreateTweet from "../components/CreateTweet";
 import { updateTweets } from "../store/actions";
 import BottomNavbar from "../components/BottomNavbar";
+import AboutModal from "./AboutModal";
 
 function Home() {
   const [show, setShow] = useState(false);
@@ -48,6 +49,7 @@ function Home() {
           <RightSidebar />
         </div>
       </div>
+      <AboutModal />
       <BottomNavbar />
     </div>
   );
