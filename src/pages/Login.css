@@ -3,6 +3,9 @@
 }
 .login-background {
   background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -11,8 +14,7 @@
 
 .form-container {
   background-color: #fefefe;
-  margin: 5% auto;
-  width: 50%;
+  margin: 40px 20px;
   border-radius: 0.5rem;
   border-style: none;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
